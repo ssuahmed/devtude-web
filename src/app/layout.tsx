@@ -19,6 +19,16 @@ export const metadata: Metadata = {
   title: "Devtude — Custom AI systems for small businesses",
   description:
     "Hire a small team to design and build an AI-powered management system or a custom app, around how you already work.",
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
+  },
 };
 
 export default function RootLayout({
