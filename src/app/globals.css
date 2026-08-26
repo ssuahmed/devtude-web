@@ -1,0 +1,287 @@
+@import "tailwindcss";
+
+:root {
+  /* Material 3 tonal palette — Gemini-inspired light scheme */
+  --md-primary: #5254fe;
+  --md-on-primary: #ffffff;
+  --md-primary-container: #dce1ff;
+  --md-on-primary-container: #00164d;
+
+  --md-secondary: #6b4dff;
+  --md-on-secondary: #ffffff;
+  --md-secondary-container: #e8deff;
+  --md-on-secondary-container: #1f0060;
+
+  --md-tertiary: #006d63;
+  --md-on-tertiary: #ffffff;
+  --md-tertiary-container: #9ff2e6;
+  --md-on-tertiary-container: #00201c;
+
+  --md-error: #ba1a1a;
+  --md-error-container: #ffdad6;
+
+  --md-surface: #f7f8ff;
+  --md-surface-dim: #d8d9e4;
+  --md-surface-bright: #f7f8ff;
+  --md-surface-container-lowest: #ffffff;
+  --md-surface-container-low: #f1f3fd;
+  --md-surface-container: #ebedf8;
+  --md-surface-container-high: #e5e7f2;
+  --md-surface-container-highest: #dfe1ec;
+
+  --md-on-surface: #1a1c22;
+  --md-on-surface-variant: #45464f;
+  --md-outline: #767680;
+  --md-outline-variant: #c6c6d0;
+
+  --md-inverse-surface: #0e1118;
+  --md-inverse-on-surface: #e4e6f2;
+  --md-inverse-primary: #b4c4ff;
+
+  --md-gemini-blue: #4285f4;
+  --md-gemini-violet: #9b72cb;
+  --md-gemini-coral: #d96570;
+  --md-gemini-teal: #1ec8c8;
+
+  --background: var(--md-surface);
+  --foreground: var(--md-on-surface);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--md-primary);
+  --color-on-primary: var(--md-on-primary);
+  --color-primary-container: var(--md-primary-container);
+  --color-on-primary-container: var(--md-on-primary-container);
+
+  --color-secondary: var(--md-secondary);
+  --color-on-secondary: var(--md-on-secondary);
+  --color-secondary-container: var(--md-secondary-container);
+  --color-on-secondary-container: var(--md-on-secondary-container);
+
+  --color-tertiary: var(--md-tertiary);
+  --color-on-tertiary: var(--md-on-tertiary);
+  --color-tertiary-container: var(--md-tertiary-container);
+  --color-on-tertiary-container: var(--md-on-tertiary-container);
+
+  --color-error: var(--md-error);
+  --color-error-container: var(--md-error-container);
+
+  --color-surface: var(--md-surface);
+  --color-surface-dim: var(--md-surface-dim);
+  --color-surface-bright: var(--md-surface-bright);
+  --color-surface-container-lowest: var(--md-surface-container-lowest);
+  --color-surface-container-low: var(--md-surface-container-low);
+  --color-surface-container: var(--md-surface-container);
+  --color-surface-container-high: var(--md-surface-container-high);
+  --color-surface-container-highest: var(--md-surface-container-highest);
+
+  --color-on-surface: var(--md-on-surface);
+  --color-on-surface-variant: var(--md-on-surface-variant);
+  --color-outline: var(--md-outline);
+  --color-outline-variant: var(--md-outline-variant);
+
+  --color-inverse-surface: var(--md-inverse-surface);
+  --color-inverse-on-surface: var(--md-inverse-on-surface);
+  --color-inverse-primary: var(--md-inverse-primary);
+
+  --color-gemini-blue: var(--md-gemini-blue);
+  --color-gemini-violet: var(--md-gemini-violet);
+  --color-gemini-coral: var(--md-gemini-coral);
+  --color-gemini-teal: var(--md-gemini-teal);
+
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-instrument-serif), Georgia, "Times New Roman", serif;
+
+  --radius-md3: 1.75rem;
+  --radius-md3-lg: 2.5rem;
+  --shadow-md3: 0 1px 2px rgb(26 28 34 / 0.04), 0 8px 24px rgb(82 84 254 / 0.06);
+  --shadow-md3-lg: 0 4px 8px rgb(26 28 34 / 0.04), 0 24px 48px rgb(82 84 254 / 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--md-primary-container);
+  color: var(--md-on-primary-container);
+}
+
+:focus-visible {
+  outline: 2px solid var(--md-primary);
+  outline-offset: 3px;
+}
+
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    var(--md-gemini-blue) 0%,
+    var(--md-gemini-violet) 48%,
+    var(--md-gemini-coral) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.mesh {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.mesh-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  opacity: 0.45;
+  will-change: transform;
+  animation: mesh-drift 22s ease-in-out infinite;
+}
+
+.mesh-blob-a {
+  width: 42rem;
+  height: 42rem;
+  top: -12rem;
+  left: -8rem;
+  background: color-mix(in srgb, var(--md-gemini-blue) 55%, transparent);
+}
+
+.mesh-blob-b {
+  width: 36rem;
+  height: 36rem;
+  top: -8rem;
+  right: -10rem;
+  background: color-mix(in srgb, var(--md-gemini-violet) 50%, transparent);
+  animation-delay: -7s;
+}
+
+.mesh-blob-c {
+  width: 32rem;
+  height: 32rem;
+  bottom: -10rem;
+  left: 30%;
+  background: color-mix(in srgb, var(--md-gemini-teal) 40%, transparent);
+  animation-delay: -13s;
+}
+
+.mesh-blob-dark-a {
+  width: 28rem;
+  height: 28rem;
+  top: -8rem;
+  left: 10%;
+  background: color-mix(in srgb, var(--md-gemini-blue) 45%, transparent);
+}
+
+.mesh-blob-dark-b {
+  width: 24rem;
+  height: 24rem;
+  bottom: -8rem;
+  right: 8%;
+  background: color-mix(in srgb, var(--md-gemini-violet) 40%, transparent);
+  animation-delay: -8s;
+}
+
+.mark-field {
+  position: absolute;
+  pointer-events: none;
+  height: auto;
+  will-change: transform;
+  animation: mesh-drift 26s ease-in-out infinite;
+}
+
+.mark-inner {
+  display: block;
+  opacity: 0.14;
+}
+
+.mark-field-listen {
+  top: 6%;
+  right: -7%;
+  width: min(46vw, 30rem);
+  animation-delay: -4s;
+}
+
+.mark-field-listen .mark-inner {
+  transform: rotate(14deg);
+  opacity: 0.13;
+}
+
+.mark-field-reply {
+  top: 14%;
+  left: -6%;
+  width: min(32vw, 19rem);
+  animation-delay: -11s;
+}
+
+.mark-field-reply .mark-inner {
+  transform: scaleX(-1) rotate(10deg);
+  opacity: 0.1;
+}
+
+.mark-field-echo {
+  bottom: -8%;
+  left: 38%;
+  width: min(22vw, 12rem);
+  animation-delay: -17s;
+}
+
+.mark-field-echo .mark-inner {
+  transform: rotate(-28deg);
+  opacity: 0.08;
+}
+
+.mark-field-dark {
+  right: -8%;
+  bottom: -28%;
+  width: min(55%, 26rem);
+}
+
+.mark-field-dark .mark-inner {
+  transform: rotate(-18deg);
+  opacity: 0.16;
+}
+
+@keyframes mesh-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(4%, 6%, 0) scale(1.08);
+  }
+}
+
+.hero-glow {
+  position: absolute;
+  inset: auto 8% -12% 8%;
+  height: 55%;
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--md-gemini-violet) 28%, transparent),
+    transparent 70%
+  );
+  filter: blur(24px);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .mesh-blob,
+  .mark-field {
+    animation: none;
+  }
+}
